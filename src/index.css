@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary-blue: #007BFF;
+  }
+}
+
+@keyframes grid-pattern-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px; /* Matches background-size */
+  }
+}
+
+.animate-grid-pattern {
+  animation: grid-pattern-move 60s linear infinite;
+}
+
+
+
+
