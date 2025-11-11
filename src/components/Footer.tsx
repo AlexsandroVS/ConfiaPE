@@ -30,7 +30,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-black py-16 text-white overflow-hidden">
+    <footer className="relative bg-black py-12 md:py-16 text-white overflow-hidden">
       <div className="absolute inset-0 z-0">
         <motion.div 
           className="absolute top-0 left-0 w-full h-full bg-cyan-500/10 blur-3xl"
@@ -44,31 +44,31 @@ const Footer = () => {
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
         <motion.img
           src="/ConfiaPE.png"
           alt="ConfiaPE Logo"
-          className="h-16 mx-auto mb-8"
+          className="h-12 sm:h-16 mx-auto mb-6 sm:mb-8"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         />
 
         <motion.div 
-          className="flex justify-center space-x-6 mb-8"
+          className="flex flex-wrap justify-center gap-x-4 sm:space-x-6 mb-6 sm:mb-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1, transition: { delay: 0.2 } }}
           viewport={{ once: true }}
         >
           {footerLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-gray-400 hover:text-primary-blue transition-colors">
+            <a key={link.name} href={link.href} className="text-gray-400 text-sm hover:text-primary-blue transition-colors">
               {link.name}
             </a>
           ))}
         </motion.div>
 
         <motion.div 
-          className="flex justify-center space-x-6 mb-10"
+          className="flex justify-center space-x-5 sm:space-x-6 mb-8 sm:mb-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1, transition: { delay: 0.4 } }}
           viewport={{ once: true }}
@@ -78,15 +78,15 @@ const Footer = () => {
               key={index}
               href={link.href}
               whileHover={{ scale: 1.2, color: '#fb923c' }} // Orange hover
-              className="text-gray-400 text-3xl"
+              className="text-2xl sm:text-3xl"
             >
               <link.icon />
             </motion.a>
           ))}
         </motion.div>
 
-        <div className="border-t border-gray-800 pt-8">
-          <p className="text-gray-500">&copy; {new Date().getFullYear()} Confia.pe. Todos los derechos reservados.</p>
+        <div className="border-t border-gray-800 pt-6 sm:pt-8">
+          <p className="text-gray-500 text-xs sm:text-sm">&copy; {new Date().getFullYear()} Confia.pe. Todos los derechos reservados.</p>
         </div>
       </div>
 
@@ -97,10 +97,10 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 bg-primary-blue text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition-colors z-50 shadow-primary-blue/40"
+            className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 bg-primary-blue text-white p-3 sm:p-4 rounded-full shadow-lg hover:bg-blue-600 transition-colors z-50 shadow-primary-blue/40"
             whileHover={{ scale: 1.1, boxShadow: '0 0 20px rgba(0,123,255,0.7)' }}
           >
-            <FaArrowUp className="text-xl" />
+            <FaArrowUp className="text-lg sm:text-xl" />
           </motion.button>
         )}
       </AnimatePresence>

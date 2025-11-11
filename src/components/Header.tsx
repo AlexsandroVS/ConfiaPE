@@ -67,10 +67,10 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 120, damping: 15, duration: 0.5 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-gray-950/80 backdrop-blur-lg py-2 border-b border-gray-700' : 'bg-gray-950/70 backdrop-blur-md py-4 border-b border-gray-800'
+        scrolled ? 'bg-gray-950/80 backdrop-blur-lg py-1.5 md:py-2 border-b border-gray-700' : 'bg-gray-950/70 backdrop-blur-md py-3 md:py-4 border-b border-gray-800'
       }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
         <motion.img
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -78,9 +78,9 @@ const Header = () => {
           whileHover={{ scale: 1.05, rotate: 2, boxShadow: "0 0 15px rgba(0, 123, 255, 0.6)" }} // Logo Interactivo with glow
           src="/ConfiaPE.png"
           alt="ConfiaPE Logo"
-          className="h-16 cursor-pointer"
+          className="h-12 sm:h-16 cursor-pointer"
         />
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-6 lg:space-x-8">
           {navLinks.map((link, index) => (
             <motion.a
               key={link.name}
@@ -90,7 +90,7 @@ const Header = () => {
               animate="visible"
               whileHover="hover" // Apply hover animation
               transition={{ delay: 0.3 + index * 0.1 }}
-              className={`text-lg font-medium transition-colors relative group ${
+              className={`text-base lg:text-lg font-medium transition-colors relative group ${
                 activeLink === link.href ? 'text-primary-blue' : 'text-white hover:text-primary-blue'
               }`}
             >
@@ -111,9 +111,9 @@ const Header = () => {
                 >
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <HiX className="block h-7 w-7" aria-hidden="true" />
+                    <HiX className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <HiMenu className="block h-7 w-7" aria-hidden="true" />
+                    <HiMenu className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
                 <AnimatePresence>
@@ -123,7 +123,7 @@ const Header = () => {
                       initial="closed"
                       animate="open"
                       exit="closed"
-                      className="absolute top-full left-0 w-full bg-gray-950/90 backdrop-blur-md pb-3 md:hidden overflow-hidden"
+                      className="absolute top-full left-0 w-full bg-gray-950/90 backdrop-blur-md pb-3 md:hidden overflow-hidden border-b border-gray-700"
                     >
                       <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link, index) => (
@@ -135,7 +135,7 @@ const Header = () => {
                             initial="hidden"
                             animate="visible"
                             transition={{ delay: 0.1 + index * 0.05 }}
-                            className={`block px-3 py-2 rounded-md text-base font-medium ${
+                            className={`block px-3 py-2 rounded-md text-sm font-medium ${
                               activeLink === link.href ? 'text-primary-blue bg-gray-800' : 'text-gray-300 hover:text-white hover:bg-gray-700'
                             }`}
                             onClick={() => {

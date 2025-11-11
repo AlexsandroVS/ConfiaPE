@@ -95,12 +95,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-black text-white relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 bg-black text-white relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-10" style={{backgroundImage: 'radial-gradient(circle at 20% 20%, #007BFF, transparent 30%), radial-gradient(circle at 80% 70%, #fb923c, transparent 30%)'}} />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.h2 
-          className="text-4xl md:text-5xl font-bold mb-12 text-center"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-center"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -108,9 +108,9 @@ const Contact = () => {
           Construyamos Algo <span className="text-primary-blue">Increíble</span>
         </motion.h2>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
           <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
-            <div className="w-full h-80">
+            <div className="w-full h-48 sm:h-64 md:h-80 lg:h-full hidden md:block">
               <Canvas camera={{ position: [0, 0, 10], fov: 75 }}>
                 <ambientLight intensity={0.5} />
                 <pointLight color="#0ea5e9" position={[0, 0, 5]} intensity={150} />
@@ -119,14 +119,14 @@ const Contact = () => {
                 </Suspense>
               </Canvas>
             </div>
-            <h3 className="text-3xl font-bold text-white mt-4">Cada gran proyecto comienza con una conversación.</h3>
-            <p className="text-gray-300 mt-2">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-4 sm:mt-6">Cada gran proyecto comienza con una conversación.</h3>
+            <p className="text-gray-300 text-sm sm:text-base mt-2 sm:mt-3">
               Compártenos tu idea, y nuestro equipo de expertos te guiará en cada paso del camino para hacerla realidad.
             </p>
           </div>
 
           <div className="flex flex-col justify-center">
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
               {['name', 'email', 'phone', 'message'].map((field) => (
                 <div key={field} className="relative group">
                   <input
@@ -135,26 +135,26 @@ const Contact = () => {
                     placeholder=" "
                     value={formData[field as keyof typeof formData]}
                     onChange={handleChange}
-                    className={`peer w-full bg-transparent border-b-2 ${errors[field as keyof typeof errors] ? 'border-red-500' : 'border-gray-600'} focus:border-transparent pt-4 pb-2 outline-none transition-colors text-white`}
+                    className={`peer w-full bg-transparent border-b-2 ${errors[field as keyof typeof errors] ? 'border-red-500' : 'border-gray-600'} focus:border-primary-blue pt-4 pb-2 outline-none transition-colors text-white text-sm sm:text-base`}
                   />
                   <label 
                     htmlFor={field} 
-                    className="absolute left-0 -top-3.5 text-sm text-primary-blue transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary-blue group-hover:text-primary-blue"
+                    className="absolute left-0 -top-3.5 text-xs sm:text-sm text-primary-blue transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs sm:peer-focus:text-sm peer-focus:text-primary-blue group-hover:text-primary-blue"
                   >
                     {field === 'name' ? 'Nombre Completo' : field === 'email' ? 'Correo Electrónico' : field === 'phone' ? 'Teléfono (Opcional)' : 'Tu Mensaje'}
                   </label>
                   <div className="absolute -bottom-px left-0 h-0.5 bg-primary-blue w-0 peer-focus:w-full transition-all duration-300" />
-                  {errors[field as keyof typeof errors] && <p className="text-red-500 text-sm mt-1">{errors[field as keyof typeof errors]}</p>}
+                  {errors[field as keyof typeof errors] && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors[field as keyof typeof errors]}</p>}
                 </div>
               ))}
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center px-8 py-4 font-bold text-white rounded-full group bg-primary-blue shadow-lg shadow-primary-blue/30 disabled:opacity-50"
+                className="w-full flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold text-white rounded-full group bg-primary-blue shadow-lg shadow-primary-blue/30 disabled:opacity-50"
                 whileHover={{ scale: 1.05, y: -3, boxShadow: '0 0 20px rgba(0,123,255,0.5)' }}
                 whileTap={{ scale: 0.95 }}
               >
-                {isSubmitting ? <FaSpinner className="animate-spin" /> : <><FaPaperPlane className="mr-2" /> Enviar Mensaje</>}
+                {isSubmitting ? <FaSpinner className="animate-spin text-lg sm:text-xl" /> : <><FaPaperPlane className="mr-2 text-base sm:text-lg" /> Enviar Mensaje</>}
               </motion.button>
               <AnimatePresence>
                 {submitStatus && (
@@ -162,7 +162,7 @@ const Contact = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className={`text-center mt-4 ${submitStatus === 'success' ? 'text-green-400' : 'text-red-500'}`}
+                    className={`text-center mt-4 text-sm sm:text-base ${submitStatus === 'success' ? 'text-green-400' : 'text-red-500'}`}
                   >
                     {submitStatus === 'success' ? '¡Mensaje enviado! Gracias por contactarnos.' : 'Error al enviar. Inténtalo de nuevo.'}
                   </motion.p>
